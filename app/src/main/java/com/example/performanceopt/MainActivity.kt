@@ -10,6 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.performanceopt.idlehandler.ARouterInitTask
+import com.example.performanceopt.idlehandler.WebviewInitTask
+import com.example.performanceopt.idlehandler.TaskDispatcher
 import com.example.performanceopt.ui.theme.PerformanceOptTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,6 +29,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+        TaskDispatcher()
+            .addTask(ARouterInitTask())
+            .addTask(WebviewInitTask())
+            .start()
     }
 }
 
